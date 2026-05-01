@@ -72,7 +72,7 @@ export default async function ContactPage() {
               <label className="block text-sm font-semibold text-gray-400 mb-2">Message</label>
               <textarea rows={4} className="w-full border-b-2 border-white/20 text-white py-2 focus:outline-none focus:border-brand-red transition-colors bg-transparent resize-none"></textarea>
             </div>
-            <button type="button" onClick={() => alert('Form submitted!')} className="bg-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-brand-red transition-colors shadow-lg">
+            <button type="button" className="bg-white/10 text-white px-8 py-4 rounded-full font-bold hover:bg-brand-red transition-colors shadow-lg">
               Send Message
             </button>
           </form>
