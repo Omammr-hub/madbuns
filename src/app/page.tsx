@@ -1,8 +1,5 @@
-export const dynamic = 'force-dynamic';
 import Hero from '@/components/Hero'
 import prisma from '@/lib/prisma'
-
-
 
 export default async function Home() {
   let introText = ''

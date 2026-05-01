@@ -1,8 +1,5 @@
-export const dynamic = 'force-dynamic';
 import prisma from '@/lib/prisma'
 import MenuDisplay from '@/components/MenuDisplay'
-
-
 
 export default async function MenuPage() {
   let categories: any[] = []
