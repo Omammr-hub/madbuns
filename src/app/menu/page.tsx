@@ -1,7 +1,8 @@
+export const dynamic = 'force-dynamic';
 import prisma from '@/lib/prisma'
 import MenuDisplay from '@/components/MenuDisplay'
 
-export const revalidate = 60 // Revalidate every 60 seconds
+
 
 export default async function MenuPage() {
   let categories: any[] = []

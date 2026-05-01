@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic';
 import Hero from '@/components/Hero'
 import prisma from '@/lib/prisma'
 
-export const revalidate = 60 // Revalidate every 60 seconds
+
 
 export default async function Home() {
   let introText = ''
