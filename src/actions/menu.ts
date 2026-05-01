@@ -30,8 +30,7 @@ export async function addCategory(data: FormData) {
   revalidatePath('/admin/menu')
 }
 
-import { writeFile, mkdir } from 'fs/promises'
-import path from 'path'
+
 
 export async function addMenuItem(data: FormData) {
   const name = data.get('name') as string
@@ -47,18 +46,9 @@ export async function addMenuItem(data: FormData) {
   if (image && image.size > 0) {
     const bytes = await image.arrayBuffer()
     const buffer = Buffer.from(bytes)
-    
-    const filename = `${Date.now()}-${image.name.replace(/\s+/g, '-')}`
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads')
-    
-    try {
-      await mkdir(uploadDir, { recursive: true })
-      const filepath = path.join(uploadDir, filename)
-      await writeFile(filepath, buffer)
-      imageUrl = `/uploads/${filename}`
-    } catch (e) {
-      console.error("Error saving image", e)
-    }
+    const base64 = buffer.toString('base64')
+    const mimeType = image.type || 'image/jpeg'
+    imageUrl = `data:${mimeType};base64,${base64}`
   }
 
   await prisma.menuItem.create({
