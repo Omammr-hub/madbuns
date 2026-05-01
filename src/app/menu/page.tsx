@@ -4,8 +4,8 @@ import MenuDisplay from '@/components/MenuDisplay'
 export const revalidate = 60 // Revalidate every 60 seconds
 
 export default async function MenuPage() {
-  let categories = []
-  
+  let categories: any[] = []
+
   try {
     categories = await prisma.category.findMany({
       orderBy: { order: 'asc' },
