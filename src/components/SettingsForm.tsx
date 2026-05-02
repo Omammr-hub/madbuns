@@ -72,6 +72,33 @@ export default function SettingsForm({ initialSettings }: { initialSettings: Rec
           </button>
         </div>
       </div>
+      <div className="bg-[#111] p-8 rounded-3xl shadow-xl border border-white/10">
+        <h2 className="text-2xl font-bold text-white mb-6 border-b border-white/10 pb-4">Security</h2>
+        <form action={async (formData) => {
+          setSaving(true)
+          const { changePassword } = await import('@/actions/admin')
+          const res = await changePassword(formData)
+          setSaving(false)
+          if (res?.error) alert(res.error)
+          else alert("Password changed successfully!")
+        }} className="space-y-4">
+          <div>
+            <label className="block text-sm font-semibold text-gray-400 mb-2">Current Password</label>
+            <input type="password" name="currentPassword" required className="w-full bg-[#0a0a0a] text-white border-2 border-white/10 px-4 py-3 rounded-xl focus:outline-none focus:border-brand-red transition-colors" />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-gray-400 mb-2">New Password</label>
+            <input type="password" name="newPassword" required minLength={6} className="w-full bg-[#0a0a0a] text-white border-2 border-white/10 px-4 py-3 rounded-xl focus:outline-none focus:border-brand-red transition-colors" />
+          </div>
+          <button 
+            type="submit"
+            disabled={saving}
+            className="bg-[#222] border border-white/10 text-white px-6 py-3 rounded-xl font-bold hover:bg-brand-red transition-colors w-full shadow-md disabled:opacity-50"
+          >
+            Update Password
+          </button>
+        </form>
+      </div>
     </div>
   )
 }
