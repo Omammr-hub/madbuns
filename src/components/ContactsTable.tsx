@@ -91,5 +91,6 @@ export default function ContactsTable({ messages }: { messages: Message[] }) {
         </tbody>
       </table>
     </div>
+    </div>
   )
 }
